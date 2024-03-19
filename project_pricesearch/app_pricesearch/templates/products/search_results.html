@@ -1,0 +1,37 @@
+{% extends 'products/base.html' %}
+{% block content %}
+<style>
+</style>
+
+<form style="text-align: center;" action="% url 'results' %" method="POST">
+    <div>
+        <h1 style="text-align: center;">Search</h1>
+        <input type="text" class="form-control-lg" name="product" placeholder="search...">
+        <input type="submit" class="form-control-lg" value="🔎">
+    </div>
+</form>
+<div class="container">
+    <table class="table table-light table-strip">
+        <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Site</th>
+            <th>Date Quotation</th>
+
+        </tr>
+        {% for data in data_list %}
+        <tr>
+            <td><img style="max-height: 150px; max-width: 150px;" src="{{ data.image_link }}" </td>
+            <td>{{ data.id_product }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.price }}</td>
+            <td>{{ data.site }}</td>
+            <td>{{ data.date_quotation | date: "m/d/Y"}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

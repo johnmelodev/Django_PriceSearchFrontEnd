@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_pricesearch'
+    'app_pricesearch',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [

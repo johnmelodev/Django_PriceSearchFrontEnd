@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Product
 
 
 def search(request):
@@ -6,4 +7,11 @@ def search(request):
 
 
 def show_results(request):
-    pass
+    product_name = request.POST.get('product')
+    print(product_name)
+    data = {
+        'data': Product.objects.filter(name__icontains=product_name).order_by('price')
+
+    }
+
+    return render(request, 'products/search_results.html', data)

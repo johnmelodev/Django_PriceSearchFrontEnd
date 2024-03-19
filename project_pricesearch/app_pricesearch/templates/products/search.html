@@ -1,0 +1,23 @@
+{% extends 'products/base.html' %}
+{% block content %}
+<style>
+    .centralize {
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
+
+
+<form class="centralize" action="% url 'results' %" method="POST">
+    {% csrf_token %}
+    <div>
+        <h1 style="text-align: center;">Search</h1>
+        <input type="text" class="form-control-lg" name="product" placeholder="search...">
+        <input type="submit" class="form-control-lg" value="🔎">
+    </div>
+</form>
+
+{% endblock %}
