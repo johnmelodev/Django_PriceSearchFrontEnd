@@ -3,13 +3,15 @@
 <style>
 </style>
 
-<form style="text-align: center;" action="% url 'results' %" method="POST">
+<form style="text-align: center;" action="{% url 'results' %}" method="POST">
     <div>
+        {% csrf_token %}
         <h1 style="text-align: center;">Search</h1>
         <input type="text" class="form-control-lg" name="product" placeholder="search...">
         <input type="submit" class="form-control-lg" value="🔎">
     </div>
 </form>
+<br>
 <div class="container">
     <table class="table table-light table-strip">
         <tr>
@@ -20,14 +22,15 @@
             <th>Date Quotation</th>
 
         </tr>
-        {% for data in data_list %}
+        {% for data in datas %}
         <tr>
             <td><img style="max-height: 150px; max-width: 150px;" src="{{ data.image_link }}" </td>
             <td>{{ data.id_product }}</td>
             <td>{{ data.name }}</td>
             <td>{{ data.price }}</td>
             <td>{{ data.site }}</td>
-            <td>{{ data.date_quotation | date: "m/d/Y"}}</td>
+            <td>{{ data.date_quotation | date:'m/d/Y' }}</td>
+
         </tr>
         {% endfor %}
     </table>

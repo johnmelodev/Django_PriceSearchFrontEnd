@@ -9,9 +9,8 @@ def search(request):
 def show_results(request):
     product_name = request.POST.get('product')
     print(product_name)
-    data = {
-        'data': Product.objects.filter(name__icontains=product_name).order_by('price')
-
+    datas = {
+        'datas': Product.objects.filter(name__icontains=product_name).order_by('price')
     }
 
-    return render(request, 'products/search_results.html', data)
+    return render(request, 'products/search_results.html', datas)
